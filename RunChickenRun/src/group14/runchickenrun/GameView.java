@@ -62,6 +62,7 @@ public class GameView extends SurfaceView {
     	// background
         canvas.drawColor(Color.BLACK);
         
+        // hej
         backgroundSprite.draw(canvas);
         if(((BackgroundSprite) backgroundSprite).getX() <= 935) ((BackgroundSprite) backgroundSprite).setX(934);
         backgroundSprite2.draw(canvas);
