@@ -7,6 +7,7 @@ public class Chicken extends Sprite{
 
 	private float x;
 	private float y;
+	private String isFat;
 	
 	private float dx;
 	private int moveSpeed = 5;

@@ -14,7 +14,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //setContentView(R.layout.activity_main);
-        setContentView(new GameView(this));
+        
+        setContentView(new GameView(this, new SoundManager(this)));
 
     }
 

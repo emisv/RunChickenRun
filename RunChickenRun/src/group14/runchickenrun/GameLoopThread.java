@@ -21,8 +21,9 @@ import android.view.SurfaceView;
     
     private SoundManager soundManager;
     
-    public GameLoopThread(GameView view) {
-          this.view = view;
+    public GameLoopThread(GameView view, SoundManager sm) {
+          this.soundManager = sm;
+    	  this.view = view;
           this.soundManager = null;
     }
 
