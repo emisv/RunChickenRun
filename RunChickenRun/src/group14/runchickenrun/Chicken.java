@@ -11,6 +11,8 @@ public class Chicken extends Sprite{
 	
 	private float dx;
 	private int moveSpeed = 5;
+	private boolean doWalk = true;
+	private float walkSpeed = 2f;
 	
 	public Chicken(GameView gameView, Bitmap bmp, float x, float y) {
 		super(gameView, bmp);
@@ -38,5 +40,11 @@ public class Chicken extends Sprite{
 		return dx;
 	}
 	
+	public boolean doWalk() {
+		return doWalk;
+	}
 	
+	public float getWalkSpeed() {
+		return walkSpeed;
+	}
 }

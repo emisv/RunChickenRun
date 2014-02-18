@@ -63,7 +63,15 @@ public class GameView extends SurfaceView {
         canvas.drawColor(Color.BLACK);
         
         backgroundSprite.draw(canvas);
+        if(((BackgroundSprite) backgroundSprite).getX() <= 935) ((BackgroundSprite) backgroundSprite).setX(934);
         backgroundSprite2.draw(canvas);
+        if(((BackgroundSprite) backgroundSprite2).getX() <= 935) ((BackgroundSprite) backgroundSprite2).setX(934);
+
+        if(((Chicken)gameLoopThread.getSprites().get(0)).doWalk() == true) {
+        	((BackgroundSprite) backgroundSprite).setX(((Chicken)gameLoopThread.getSprites().get(0)).getWalkSpeed());
+        	((BackgroundSprite) backgroundSprite2).setX(((Chicken)gameLoopThread.getSprites().get(0)).getWalkSpeed());
+        }
+        
         
         // chicken
         for(int i = 0; i < gameLoopThread.getSprites().size(); i++) {
@@ -82,7 +90,7 @@ public class GameView extends SurfaceView {
         backgroundSprite2 = new BackgroundSprite(this, bmp, (Chicken) sprites.get(0), 934);
         
         for(int i = 0; i < 200; i++) {
-        	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, 250 - 32, (Chicken) sprites.get(0)));
+        	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, (int) (this.getHeight() * 0.8), (Chicken) sprites.get(0)));
         }
         
 		return sprites;
@@ -95,7 +103,7 @@ public class GameView extends SurfaceView {
 	
 	private Sprite createChicken(int resource) {
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
-        return new Chicken(this, bmp, 50, 180);
+        return new Chicken(this, bmp, 50, this.getHeight() / 2);
 	}
 	
 	private Sprite createSprite(int resource) {

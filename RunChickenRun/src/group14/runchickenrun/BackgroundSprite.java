@@ -19,5 +19,13 @@ public class BackgroundSprite extends Sprite{
 	public void draw(Canvas canvas) {
         canvas.drawBitmap(bmp, x + chicken.getDx() , y, null);
 	}
+	
+	public void setX(float x) {
+		this.x = x;
+	}
+	
+	public float getX() {
+		return x;
+	}
 
 }
