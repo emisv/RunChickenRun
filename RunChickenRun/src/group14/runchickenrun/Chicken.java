@@ -24,7 +24,7 @@ public class Chicken{
 		this.y = y;
 		this.gameView = gameView;
 		
-		Bitmap bmp = BitmapFactory.decodeResource(gameView.getResources(), R.drawable.chicken1);
+		bitmap = BitmapFactory.decodeResource(gameView.getResources(), R.drawable.chicken1);
 
 		
 	}
