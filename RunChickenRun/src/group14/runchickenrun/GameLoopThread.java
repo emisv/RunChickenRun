@@ -27,8 +27,6 @@ import android.view.SurfaceView;
           //this.soundManager = sm;
     	  this.view = view;
           this.soundManager = null;
-          chicken = new Chicken(view, 50, view.getHeight() / 2);
-          sprites = view.createSprites();
     }
 
     public void setRunning(boolean run) {
@@ -86,6 +84,8 @@ import android.view.SurfaceView;
     private void init() {
     	getDelta(); // call once before loop to initialise lastFrame
     	lastFPS = getTime(); // call before loop to initialise fps timer
+    	chicken = new Chicken(view, 50, view.getHeight() / 2);
+        sprites = view.createSprites();
     }
 
 	/**
