@@ -17,6 +17,6 @@ public class Sprite {
        }
       
        public void draw(Canvas canvas) {
-             //canvas.drawBitmap(bmp, x , 10, null);
+             //canvas.drawBitmap(bmp, 0 , 0, null);
        }
 }  

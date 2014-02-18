@@ -16,7 +16,10 @@ public class GameView extends SurfaceView {
 	
     private SurfaceHolder holder;
     private GameLoopThread gameLoopThread;
-    private Sprite sprite;
+    
+    private Sprite backgroundSprite;
+    private Sprite backgroundSprite2;
+
     private MainActivity mainActivity;
     private SoundManager soundManager;
     
@@ -51,14 +54,16 @@ public class GameView extends SurfaceView {
                                int width, int height) {
                  }
           });
-          Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.chicken1);
-          sprite = new Sprite(this, bmp);
+          
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
     	// background
         canvas.drawColor(Color.BLACK);
+        
+        backgroundSprite.draw(canvas);
+        backgroundSprite2.draw(canvas);
         
         // chicken
         for(int i = 0; i < gameLoopThread.getSprites().size(); i++) {
@@ -69,6 +74,13 @@ public class GameView extends SurfaceView {
 	public List<Sprite> createSprites() {
 		List<Sprite> sprites = new ArrayList<Sprite>();
 		sprites.add(createChicken(R.drawable.chicken1));
+		
+		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
+        backgroundSprite = new BackgroundSprite(this, bmp, (Chicken) sprites.get(0), 0);
+		
+        Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
+        backgroundSprite2 = new BackgroundSprite(this, bmp, (Chicken) sprites.get(0), 934);
+        
 		return sprites;
 	}
 	

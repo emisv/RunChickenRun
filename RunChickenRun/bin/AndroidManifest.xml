@@ -30,8 +30,7 @@
         <activity
             android:name="group14.runchickenrun.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="group14.runchickenrun.MainActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="group14.runchickenrun.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="group14.runchickenrun.MainActivity" />
