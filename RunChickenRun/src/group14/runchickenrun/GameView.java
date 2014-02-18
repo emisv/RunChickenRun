@@ -73,8 +73,7 @@ public class GameView extends SurfaceView {
         	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
         }
         
-       
-        
+        gameLoopThread.getChicken().draw(canvas);
         
         for(int i = 0; i < gameLoopThread.getSprites().size(); i++) {
         	gameLoopThread.getSprites().get(i).draw(canvas);
