@@ -28,14 +28,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="group14.runchickenrun.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName="group14.runchickenrun.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="group14.runchickenrun.MainActivity" />
-        </activity>
-        <activity
             android:name="group14.runchickenrun.MainMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_main_menu"
