@@ -47,6 +47,10 @@ public class Chicken{
 		return dx;
 	}
 	
+	public void setDx(float dx) {
+		this.dx = dx;
+	}
+	
 	public boolean doWalk() {
 		return doWalk;
 	}

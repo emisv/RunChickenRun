@@ -99,6 +99,10 @@ import android.view.SurfaceView;
 			sprite.update(delta);
 		}
 		
+		if(chicken.doWalk() == true) {
+	       	chicken.setDx(chicken.getDx() - chicken.getWalkSpeed());
+	    }
+		
 	}
 
 	public List<Sprite> getSprites() {

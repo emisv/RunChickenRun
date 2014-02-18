@@ -17,8 +17,8 @@ public class GameView extends SurfaceView {
     private SurfaceHolder holder;
     private GameLoopThread gameLoopThread;
     
-    private Sprite backgroundSprite;
-    private Sprite backgroundSprite2;
+    private BackgroundSprite backgroundSprite;
+    private BackgroundSprite backgroundSprite2;
 
     private MainActivity mainActivity;
     private SoundManager soundManager;
@@ -64,17 +64,18 @@ public class GameView extends SurfaceView {
         
         // hej
         backgroundSprite.draw(canvas);
-        if(((BackgroundSprite) backgroundSprite).getX() <= 935) ((BackgroundSprite) backgroundSprite).setX(934);
+        if(backgroundSprite.getX() <= 935) backgroundSprite.setX(934);
         backgroundSprite2.draw(canvas);
-        if(((BackgroundSprite) backgroundSprite2).getX() <= 935) ((BackgroundSprite) backgroundSprite2).setX(934);
+        if(backgroundSprite2.getX() <= 935) backgroundSprite2.setX(934);
 
         if(gameLoopThread.getChicken().doWalk() == true) {
-        	((BackgroundSprite) backgroundSprite).setX(gameLoopThread.getChicken().getWalkSpeed());
-        	((BackgroundSprite) backgroundSprite2).setX(gameLoopThread.getChicken().getWalkSpeed());
+        	backgroundSprite.setX(backgroundSprite.getX() - gameLoopThread.getChicken().getWalkSpeed());
+        	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
         }
         
+       
         
-        // chicken
+        
         for(int i = 0; i < gameLoopThread.getSprites().size(); i++) {
         	gameLoopThread.getSprites().get(i).draw(canvas);
         }
