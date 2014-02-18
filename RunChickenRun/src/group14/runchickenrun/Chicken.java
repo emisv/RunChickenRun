@@ -1,9 +1,10 @@
 package group14.runchickenrun;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
-public class Chicken extends Sprite{
+public class Chicken{
 
 	private float x;
 	private float y;
@@ -14,15 +15,22 @@ public class Chicken extends Sprite{
 	private boolean doWalk = true;
 	private float walkSpeed = 2f;
 	
-	public Chicken(GameView gameView, Bitmap bmp, float x, float y) {
-		super(gameView, bmp);
+	private GameView gameView;
+	private Bitmap bitmap;
+	
+	public Chicken(GameView gameView, float x, float y) {
+		//super(gameView, bmp);
 		this.x = x;
 		this.y = y;
+		this.gameView = gameView;
+		
+		Bitmap bmp = BitmapFactory.decodeResource(gameView.getResources(), R.drawable.chicken1);
+
+		
 	}
 	
-	@Override
 	public void update(int delta) {
-		if (x > gameView.getWidth() - bmp.getWidth() - moveSpeed) {
+		if (x > gameView.getWidth() - bitmap.getWidth() - moveSpeed) {
             moveSpeed = -5;
 		}
 		if (x + moveSpeed< 0) {
@@ -31,9 +39,8 @@ public class Chicken extends Sprite{
 		x = x + (moveSpeed * delta);
 	}
 	
-	@Override
 	public void draw(Canvas canvas) {
-        canvas.drawBitmap(bmp, x , y, null);
+        canvas.drawBitmap(bitmap, x , y, null);
 	}
 	
 	public float getDx() {

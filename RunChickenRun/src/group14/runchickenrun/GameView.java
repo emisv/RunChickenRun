@@ -68,9 +68,9 @@ public class GameView extends SurfaceView {
         backgroundSprite2.draw(canvas);
         if(((BackgroundSprite) backgroundSprite2).getX() <= 935) ((BackgroundSprite) backgroundSprite2).setX(934);
 
-        if(((Chicken)gameLoopThread.getSprites().get(0)).doWalk() == true) {
-        	((BackgroundSprite) backgroundSprite).setX(((Chicken)gameLoopThread.getSprites().get(0)).getWalkSpeed());
-        	((BackgroundSprite) backgroundSprite2).setX(((Chicken)gameLoopThread.getSprites().get(0)).getWalkSpeed());
+        if(gameLoopThread.getChicken().doWalk() == true) {
+        	((BackgroundSprite) backgroundSprite).setX(gameLoopThread.getChicken().getWalkSpeed());
+        	((BackgroundSprite) backgroundSprite2).setX(gameLoopThread.getChicken().getWalkSpeed());
         }
         
         
@@ -82,16 +82,16 @@ public class GameView extends SurfaceView {
 
 	public List<Sprite> createSprites() {
 		List<Sprite> sprites = new ArrayList<Sprite>();
-		sprites.add(createChicken(R.drawable.chicken1));
+		//sprites.add(createChicken(R.drawable.chicken1));
 		
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
-        backgroundSprite = new BackgroundSprite(this, bmp, (Chicken) sprites.get(0), 0);
+        backgroundSprite = new BackgroundSprite(this, bmp, gameLoopThread.getChicken(), 0);
 		
         Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
-        backgroundSprite2 = new BackgroundSprite(this, bmp, (Chicken) sprites.get(0), 934);
+        backgroundSprite2 = new BackgroundSprite(this, bmp, gameLoopThread.getChicken(), 934);
         
         for(int i = 0; i < 200; i++) {
-        	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, (int) (this.getHeight() * 0.8), (Chicken) sprites.get(0)));
+        	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, (int) (this.getHeight() * 0.8), gameLoopThread.getChicken()));
         }
         
 		return sprites;
@@ -102,10 +102,6 @@ public class GameView extends SurfaceView {
         return new GrassBlock(this, bmp, chicken, x, y);
 	}
 	
-	private Sprite createChicken(int resource) {
-		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
-        return new Chicken(this, bmp, 50, this.getHeight() / 2);
-	}
 	
 	private Sprite createSprite(int resource) {
         Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
