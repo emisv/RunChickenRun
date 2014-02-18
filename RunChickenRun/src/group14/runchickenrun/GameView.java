@@ -63,16 +63,18 @@ public class GameView extends SurfaceView {
         canvas.drawColor(Color.BLACK);
         
         // hej
-        backgroundSprite.draw(canvas);
-        if(backgroundSprite.getX() <= 935) backgroundSprite.setX(934);
-        backgroundSprite2.draw(canvas);
-        if(backgroundSprite2.getX() <= 935) backgroundSprite2.setX(934);
-
-        if(gameLoopThread.getChicken().doWalk() == true) {
-        	backgroundSprite.setX(backgroundSprite.getX() - gameLoopThread.getChicken().getWalkSpeed());
-        	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
+        if(backgroundSprite != null) {
+        	backgroundSprite.draw(canvas);
+	        
+	        if(backgroundSprite.getX() <= 935) backgroundSprite.setX(934);
+	        backgroundSprite2.draw(canvas);
+	        if(backgroundSprite2.getX() <= 935) backgroundSprite2.setX(934);
+	
+	        if(gameLoopThread.getChicken().doWalk() == true) {
+	        	backgroundSprite.setX(backgroundSprite.getX() - gameLoopThread.getChicken().getWalkSpeed());
+	        	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
+	        }
         }
-        
         gameLoopThread.getChicken().draw(canvas);
         
         for(int i = 0; i < gameLoopThread.getSprites().size(); i++) {
