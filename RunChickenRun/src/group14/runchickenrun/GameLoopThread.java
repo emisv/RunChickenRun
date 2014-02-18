@@ -27,6 +27,8 @@ import android.view.SurfaceView;
           //this.soundManager = sm;
     	  this.view = view;
           this.soundManager = null;
+          sprites = view.createSprites();
+          chicken = new Chicken(view, 50, view.getHeight() / 2);
     }
 
     public void setRunning(boolean run) {
@@ -64,7 +66,8 @@ import android.view.SurfaceView;
                         c = view.getHolder().lockCanvas();
                         synchronized (view.getHolder()) {
                         	   update(getDelta());
-                               view.onDraw(c);
+                        	   if(c != null)
+                        		   view.onDraw(c);
                         }
                  } finally {
                         if (c != null) {
@@ -83,8 +86,6 @@ import android.view.SurfaceView;
     private void init() {
     	getDelta(); // call once before loop to initialise lastFrame
     	lastFPS = getTime(); // call before loop to initialise fps timer
-    	sprites = view.createSprites();
-    	chicken = new Chicken(view, 50, view.getHeight() / 2);
     }
 
 	/**

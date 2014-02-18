@@ -63,7 +63,7 @@ public class GameView extends SurfaceView {
         canvas.drawColor(Color.BLACK);
         
         // hej
-        if(backgroundSprite != null) {
+        if(backgroundSprite != null && backgroundSprite != null) {
         	backgroundSprite.draw(canvas);
 	        
 	        if(backgroundSprite.getX() <= 935) backgroundSprite.setX(934);
@@ -90,7 +90,7 @@ public class GameView extends SurfaceView {
         backgroundSprite = new BackgroundSprite(this, bmp, gameLoopThread.getChicken(), 0);
 		
         Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
-        backgroundSprite2 = new BackgroundSprite(this, bmp, gameLoopThread.getChicken(), 934);
+        backgroundSprite2 = new BackgroundSprite(this, bmp2, gameLoopThread.getChicken(), 934);
         
         for(int i = 0; i < 200; i++) {
         	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, (int) (this.getHeight() * 0.8), gameLoopThread.getChicken()));
