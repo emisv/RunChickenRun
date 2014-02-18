@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 public class BackgroundSprite extends Sprite{
 
 	private float x = 0;
-	private float y = 0;
+	private float y = -40;
 	private Chicken chicken;
 	
 	public BackgroundSprite(GameView gameView, Bitmap bmp, Chicken chicken, float x) {

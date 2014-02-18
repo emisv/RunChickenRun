@@ -81,12 +81,21 @@ public class GameView extends SurfaceView {
         Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
         backgroundSprite2 = new BackgroundSprite(this, bmp, (Chicken) sprites.get(0), 934);
         
+        for(int i = 0; i < 200; i++) {
+        	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, 250 - 32, (Chicken) sprites.get(0)));
+        }
+        
 		return sprites;
+	}
+	
+	private Sprite createGrassBlock(int resource, int x, int y, Chicken chicken) {
+		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
+        return new GrassBlock(this, bmp, chicken, x, y);
 	}
 	
 	private Sprite createChicken(int resource) {
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
-        return new Chicken(50, 50, this, bmp);
+        return new Chicken(this, bmp, 50, 180);
 	}
 	
 	private Sprite createSprite(int resource) {

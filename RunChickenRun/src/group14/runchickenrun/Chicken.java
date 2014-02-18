@@ -12,8 +12,10 @@ public class Chicken extends Sprite{
 	private float dx;
 	private int moveSpeed = 5;
 	
-	public Chicken(float x, float y, GameView gameView, Bitmap bmp) {
+	public Chicken(GameView gameView, Bitmap bmp, float x, float y) {
 		super(gameView, bmp);
+		this.x = x;
+		this.y = y;
 	}
 	
 	@Override
