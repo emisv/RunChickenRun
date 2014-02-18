@@ -23,10 +23,10 @@ public class GameView extends SurfaceView {
     private MainActivity mainActivity;
     private SoundManager soundManager;
     
-    public GameView(Context context, SoundManager sm) {
+    public GameView(Context context) {
           super(context);
-          soundManager = sm;
-          gameLoopThread = new GameLoopThread(this, soundManager);
+          //soundManager = sm;
+          gameLoopThread = new GameLoopThread(this);
           holder = getHolder();
           holder.addCallback(new SurfaceHolder.Callback() {
 
