@@ -27,8 +27,8 @@ import android.view.SurfaceView;
           //this.soundManager = sm;
     	  this.view = view;
           this.soundManager = null;
-          sprites = view.createSprites();
           chicken = new Chicken(view, 50, view.getHeight() / 2);
+          sprites = view.createSprites();
     }
 
     public void setRunning(boolean run) {
