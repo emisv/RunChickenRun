@@ -87,6 +87,10 @@ public class GameView extends SurfaceView {
 		//sprites.add(createChicken(R.drawable.chicken1));
 		
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
+		bmp.getHeight();
+		gameLoopThread.getDelta();
+		gameLoopThread.getChicken();
+		this.getBottom();
         backgroundSprite = new BackgroundSprite(this, bmp, gameLoopThread.getChicken(), 0);
 		
         Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
