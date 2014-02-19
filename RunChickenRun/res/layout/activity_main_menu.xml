@@ -34,6 +34,7 @@
 	        android:layout_alignLeft="@+id/button_menu_start_game"
 	        android:layout_alignRight="@+id/button_menu_start_game"
 	        android:layout_below="@+id/button_menu_start_game"
+	        android:onClick="toSettings"
 	        android:text="@string/settings_string" />
 
 	    <Button
@@ -43,6 +44,7 @@
 	        android:layout_alignLeft="@+id/button_menu_settings"
 	        android:layout_alignRight="@+id/button_menu_settings"
 	        android:layout_below="@+id/button_menu_settings"
+	        android:onClick="toHighscore"
 	        android:text="@string/highscore_string" />
 
 	    <Button

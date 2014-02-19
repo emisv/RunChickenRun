@@ -1,6 +1,7 @@
 package group14.runchickenrun;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -14,8 +15,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //setContentView(R.layout.activity_main);
+        startActivity(new Intent(this, MainMenuActivity.class));
         
-        setContentView(new GameView(this));
+        //setContentView(new GameView(this));
 
     }
 
