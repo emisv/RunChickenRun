@@ -20,12 +20,15 @@ public class Fox extends Enemy{
 	private boolean hit = false;
     private float walkSpeed = 6f;
     
+    private Chicken chicken;
+    
 	public Fox(GameView gameView, Chicken chicken, float x, float y) {
 		super(gameView);
 		
 		this.imgTimer = (int) (Math.random() * IMG_INTERVAL) + 1;
 		this.x = x;
 		this.y = y;
+		this.chicken = chicken;
 		
 		bitmaps[0] = BitmapFactory.decodeResource(gameView.getResources(), R.drawable.fox1_new);		
 		bitmaps[1] = BitmapFactory.decodeResource(gameView.getResources(), R.drawable.fox2_new);		
@@ -46,7 +49,7 @@ public class Fox extends Enemy{
 	}
 	
 	public void draw(Canvas canvas) {
-        canvas.drawBitmap(bitmaps[imgIndex], x , y, null);
+        canvas.drawBitmap(bitmaps[imgIndex], x + chicken.getDx() , y, null);
 	}
 	
 }
