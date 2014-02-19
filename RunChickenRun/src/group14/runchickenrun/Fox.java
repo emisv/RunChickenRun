@@ -18,7 +18,7 @@ public class Fox extends Enemy{
 	private int imgIndex = 0;
 
 	private boolean hit = false;
-    private float walkSpeed = 3f;
+    private float walkSpeed = 6f;
     
 	public Fox(GameView gameView, Chicken chicken, float x, float y) {
 		super(gameView);
@@ -35,7 +35,6 @@ public class Fox extends Enemy{
 		
 	}
 	
-	@Override
 	public void update(int delta) {
 		
 		if(imgTimer == 0) {
@@ -46,7 +45,6 @@ public class Fox extends Enemy{
 		this.x -= walkSpeed; /* *delta ? */
 	}
 	
-	@Override
 	public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmaps[imgIndex], x , y, null);
 	}
