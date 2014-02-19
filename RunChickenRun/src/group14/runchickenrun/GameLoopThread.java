@@ -142,4 +142,9 @@ import android.view.SurfaceView;
 	public List<Block> getBlocks() {
 		return blocks;
 	}
+
+	public void shoot(int x, int y) {
+		chicken.resetShootTimer();
+		bullets.add(new Bullet(view, chicken.getX(), chicken.getY(), x, y, 1));
+	}
 }  

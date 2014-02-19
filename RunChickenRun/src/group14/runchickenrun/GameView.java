@@ -8,9 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.View;
 
 public class GameView extends SurfaceView {
 	
@@ -28,6 +30,25 @@ public class GameView extends SurfaceView {
           //soundManager = sm;
           gameLoopThread = new GameLoopThread(this);
           holder = getHolder();
+          this.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				int x = (int) event.getRawX();
+				int y = (int) event.getRawY();
+				
+				if(x > v.getWidth() / 2 && gameLoopThread.getChicken().getShootTimer() == Chicken.SHOOT_INTERVAL) {
+					gameLoopThread.shoot(x, y);
+				}
+				if(x < v.getWidth() / 2 && gameLoopThread.getChicken().getCanJump()) {
+					gameLoopThread.getChicken().jump();
+				}
+				
+				return true;
+			}
+        	  
+          });
+          
           holder.addCallback(new SurfaceHolder.Callback() {
 
                  @Override
@@ -57,7 +78,7 @@ public class GameView extends SurfaceView {
           
     }
 
-    @Override
+	@Override
     protected void onDraw(Canvas canvas) {
     	// background
         canvas.drawColor(Color.BLACK);

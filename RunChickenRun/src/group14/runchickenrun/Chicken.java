@@ -29,7 +29,8 @@ public class Chicken{
 	private float jumpSpeed = 13f;
 	private boolean canJump = true;
 	
-	private float shootTimer;
+	public static final float SHOOT_INTERVAL = 10;
+	private float shootTimer = SHOOT_INTERVAL;
 	
 	public Chicken(GameView gameView, float x, float y) {
 		this.x = x;
@@ -70,6 +71,10 @@ public class Chicken{
 			y += Util.GRAVITY_SPEED;
 		}
 		
+		shootTimer++;
+		if(shootTimer > SHOOT_INTERVAL) {
+			shootTimer = SHOOT_INTERVAL;
+		}
 		
 	}
 	
@@ -103,5 +108,21 @@ public class Chicken{
 	
 	public void jump() {
 		jumpTimer = JUMP_INTERVAL;
+	}
+	
+	public float getShootTimer() {
+		return shootTimer;
+	}
+
+	public void resetShootTimer() {
+		shootTimer = 0;
+	}
+	
+	public float getX() {
+		return x;
+	}
+	
+	public float getY() {
+		return y;
 	}
 }

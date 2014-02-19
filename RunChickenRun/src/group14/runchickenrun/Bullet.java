@@ -19,7 +19,7 @@ public class Bullet {
 	
 	private Bitmap bitmap;
 	
-	public Bullet(GameView gameView, float x, float y, int id) {
+	public Bullet(GameView gameView, float fromX, float fromY, float x, float y, int id) {
 		this.id = id;
 		this.x = x;
 		this.y = y;
@@ -27,6 +27,12 @@ public class Bullet {
 		if(this.id == Util.GUN_ID) {
 			bitmap = BitmapFactory.decodeResource(gameView.getResources(), R.drawable.gunbullet1);		
 		}
+		
+		fromX += 25;
+		fromY += 25;
+		
+		this.dx = (float) ((x - fromX) / Math.sqrt(((x - fromX) * (x - fromX)) + ((y - fromY) * (y - fromY))));
+		this.dy = (float) ((y - fromY) / Math.sqrt(((x - fromX) * (x - fromX)) + ((y - fromY) * (y - fromY))));
 	}
 	
 	public void update(int delta) {
