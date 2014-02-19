@@ -19,11 +19,6 @@
         <activity
             android:name="group14.runchickenrun.MainActivity"
             android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="group14.runchickenrun.MainMenuActivity"
@@ -31,6 +26,11 @@
             android:label="@string/title_activity_main_menu"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="group14.runchickenrun.SettingsActivity"

@@ -51,8 +51,9 @@ public class HighscoreActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_highscore);
+		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_highscore);
 		setupActionBar();
 
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
