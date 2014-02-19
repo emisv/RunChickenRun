@@ -1,7 +1,6 @@
 package group14.runchickenrun;
 
 import group14.runchickenrun.util.SystemUiHider;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
@@ -10,6 +9,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
+import android.view.Window;
 import android.support.v4.app.NavUtils;
 
 /**
@@ -52,6 +52,7 @@ public class HighscoreActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_highscore);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setupActionBar();
 
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
