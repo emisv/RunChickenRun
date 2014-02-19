@@ -12,7 +12,7 @@ public class Fox extends Enemy{
 	private float height = 58;
 	
     private Bitmap bitmap;
-	private Bitmap[] bitmaps;
+	private Bitmap[] bitmaps = new Bitmap[3];
 	private final float IMG_INTERVAL = 30f;
 	private float imgTimer;
 	private int imgIndex = 0;
