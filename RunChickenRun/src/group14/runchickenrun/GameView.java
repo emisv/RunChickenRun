@@ -77,7 +77,7 @@ public class GameView extends SurfaceView {
           });
           
     }
-
+    
 	@Override
     protected void onDraw(Canvas canvas) {
     	// background
