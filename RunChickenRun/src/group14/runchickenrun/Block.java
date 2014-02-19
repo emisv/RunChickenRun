@@ -3,15 +3,14 @@ package group14.runchickenrun;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class Block extends Sprite{
+public abstract class Block {
 
-	public Block(GameView gameView, Bitmap bmp) {
-		super(gameView, bmp);
+	protected GameView gameView;
+	
+	public Block(GameView gameView) {
+		this.gameView = gameView;
 	}
 
-	@Override
-	public void draw(Canvas canvcas) {
-		
-	}
+	public abstract void draw(Canvas canvcas);
 	
 }

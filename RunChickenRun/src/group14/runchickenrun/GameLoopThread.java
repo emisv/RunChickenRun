@@ -17,7 +17,9 @@ import android.view.SurfaceView;
     private int fps; // frames per second
     private long lastFPS; // last fps time
         
-    private List<Sprite> sprites = new ArrayList<Sprite>();
+    private List<Block> blocks = new ArrayList<Block>();
+    private List<Enemy> enemies = new ArrayList<Enemy>();
+    private List<Bullet> bullets = new ArrayList<Bullet>();
     
     private SoundManager soundManager;
     
@@ -85,9 +87,30 @@ import android.view.SurfaceView;
     	getDelta(); // call once before loop to initialise lastFrame
     	lastFPS = getTime(); // call before loop to initialise fps timer
     	chicken = new Chicken(view, 50, view.getHeight() / 2);
-        sprites = view.createSprites();
+        view.createSprites();
+        createMap();
     }
 
+    /**
+     * map creation
+     */
+	private void createMap() {
+		for(int i = 0; i < 200; i++) {
+        	blocks.add(new GrassBlock(this.view, this.chicken, 0 + i*32, (int) (view.getHeight() * 0.8)));
+        	if((int) (Math.random() * 10) == 0) {
+        		enemies.add(new Fox(this.view, this.chicken, i * 32, (int) (view.getHeight() * 0.8) - 1 /* * foxheight */));
+        	}
+        }
+	}
+
+	public List<Enemy> getEnemies() {
+		return enemies;
+	}
+	
+	public List<Bullet> getBullets() {
+		return bullets;
+	}
+	
 	/**
      * UPDATE SHIT HERE
      * 
@@ -95,19 +118,18 @@ import android.view.SurfaceView;
      */
 	private void update(int delta) {
 		
-		
-		for(Sprite sprite : sprites) {
-			sprite.update(delta);
+		for(Enemy enemy : enemies) {
+			enemy.update(delta);
 		}
 		
-		if(chicken.doWalk() == true) {
-	       	chicken.setDx(chicken.getDx() - chicken.getWalkSpeed());
-	    }
+		for(Bullet bullet : bullets) {
+			bullet.update(delta);
+		}
 		
-	}
-
-	public List<Sprite> getSprites() {
-		return sprites;
+		// if jumpkey pressed && player.canJump == true { player.jump() }
+		
+		chicken.update(delta);
+		
 	}
 	
 	public Chicken getChicken() {

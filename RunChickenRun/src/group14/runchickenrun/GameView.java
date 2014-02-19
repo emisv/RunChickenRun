@@ -62,60 +62,38 @@ public class GameView extends SurfaceView {
     	// background
         canvas.drawColor(Color.BLACK);
         
-        // hej
-        if(backgroundSprite != null && backgroundSprite != null) {
-        	backgroundSprite.draw(canvas);
+        backgroundSprite.draw(canvas);
 	        
-	        if(backgroundSprite.getX() <= 935) backgroundSprite.setX(934);
-	        backgroundSprite2.draw(canvas);
-	        if(backgroundSprite2.getX() <= 935) backgroundSprite2.setX(934);
+	    if(backgroundSprite.getX() <= -935) backgroundSprite.setX(934);
+	    backgroundSprite2.draw(canvas);
+	    if(backgroundSprite2.getX() <= -935) backgroundSprite2.setX(934);
 	
-	        if(gameLoopThread.getChicken().doWalk() == true) {
-	        	backgroundSprite.setX(backgroundSprite.getX() - gameLoopThread.getChicken().getWalkSpeed());
-	        	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
-	        }
-        }
+	    if(gameLoopThread.getChicken().getDoWalk() == true) {
+	     	backgroundSprite.setX(backgroundSprite.getX() - gameLoopThread.getChicken().getWalkSpeed());
+	       	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
+	    }
+        
+	    // draw enemies
+	    for(Enemy enemy : gameLoopThread.getEnemies()) {
+	    	enemy.draw(canvas);
+	    }
+	    
+	    // draw bullets
+	    for(Bullet bullet : gameLoopThread.getBullets()) {
+	    	bullet.draw(canvas);
+	    }
+	    
+	    // draw chicken
         gameLoopThread.getChicken().draw(canvas);
         
-        for(int i = 0; i < gameLoopThread.getSprites().size(); i++) {
-        	gameLoopThread.getSprites().get(i).draw(canvas);
-        }
     }
 
-	public List<Sprite> createSprites() {
-		List<Sprite> sprites = new ArrayList<Sprite>();
-		//sprites.add(createChicken(R.drawable.chicken1));
-		
+	public void createSprites() {	
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
-		// skit
-		bmp.getHeight();
-		gameLoopThread.getDelta();
-		gameLoopThread.getChicken();
-		this.getBottom();
-		// ez
         backgroundSprite = new BackgroundSprite(this, bmp, gameLoopThread.getChicken(), 0);
 		
         Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.scrollingbackground);
         backgroundSprite2 = new BackgroundSprite(this, bmp2, gameLoopThread.getChicken(), 934);
-        
-        for(int i = 0; i < 200; i++) {
-        	sprites.add(createGrassBlock(R.drawable.grassblock, 0 + i*32, (int) (this.getHeight() * 0.8), gameLoopThread.getChicken()));
-        }
-        
-		return sprites;
-	}
-	
-	private Sprite createGrassBlock(int resource, int x, int y, Chicken chicken) {
-		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
-        return new GrassBlock(this, bmp, chicken, x, y);
-	}
-	
-	
-	private Sprite createSprite(int resource) {
-        Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
-        return new Sprite(this, bmp);
 	}
     
-}
-    
-          
+}          
