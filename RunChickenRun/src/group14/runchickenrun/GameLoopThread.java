@@ -86,7 +86,7 @@ import android.view.SurfaceView;
     private void init() {
     	getDelta(); // call once before loop to initialise lastFrame
     	lastFPS = getTime(); // call before loop to initialise fps timer
-    	chicken = new Chicken(view, 50, view.getHeight() / 2);
+    	chicken = new Chicken(view, 50, (int) (view.getHeight() * 0.8));
         view.createSprites();
         createMap();
     }
@@ -98,7 +98,7 @@ import android.view.SurfaceView;
 		for(int i = 0; i < 200; i++) {
         	blocks.add(new GrassBlock(this.view, this.chicken, 0 + i*32, (int) (view.getHeight() * 0.8)));
         	if((int) (Math.random() * 10) == 0) {
-        		enemies.add(new Fox(this.view, this.chicken, i * 32, (int) (view.getHeight() * 0.8) - 1 /* * foxheight */));
+        		enemies.add(new Fox(this.view, this.chicken, i * 32, (int) (view.getHeight() * 0.8) - 58));
         	}
         }
 	}
@@ -134,5 +134,9 @@ import android.view.SurfaceView;
 	
 	public Chicken getChicken() {
 		return chicken;
+	}
+	
+	public List<Block> getBlocks() {
+		return blocks;
 	}
 }  

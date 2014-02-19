@@ -73,6 +73,11 @@ public class GameView extends SurfaceView {
 	       	backgroundSprite2.setX(backgroundSprite2.getX() - gameLoopThread.getChicken().getWalkSpeed());
 	    }
         
+	    // draw blocks
+	    for(Block block : gameLoopThread.getBlocks()) {
+	    	block.draw(canvas);
+	    }
+	    
 	    // draw enemies
 	    for(Enemy enemy : gameLoopThread.getEnemies()) {
 	    	enemy.draw(canvas);
@@ -82,6 +87,7 @@ public class GameView extends SurfaceView {
 	    for(Bullet bullet : gameLoopThread.getBullets()) {
 	    	bullet.draw(canvas);
 	    }
+	    
 	    
 	    // draw chicken
         gameLoopThread.getChicken().draw(canvas);
