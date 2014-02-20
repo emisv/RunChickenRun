@@ -24,6 +24,7 @@
             android:name="group14.runchickenrun.MainMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_main_menu"
+            android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
@@ -53,6 +54,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="group14.runchickenrun.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name="group14.runchickenrun.GameActivity"
+            android:label="@string/title_activity_game" >
         </activity>
     </application>
 

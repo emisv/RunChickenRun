@@ -3,7 +3,9 @@ package group14.runchickenrun;
 import group14.runchickenrun.util.SystemUiHider;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,15 +47,28 @@ public class MainMenuActivity extends Activity {
 	/**
 	 * The instance of the {@link SystemUiHider} for this activity.
 	 */
+	
+	private boolean soundToggle;
+	private boolean hintToggle;
+	private boolean vibrateToggle;
+	private SharedPreferences prefs;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main_menu);
+		
+		if(prefs == null){
+			prefs = this.getSharedPreferences("com.group14.RunChickenRun", Context.MODE_PRIVATE);
+			soundToggle = prefs.getBoolean("usingSound", true);
+			hintToggle = prefs.getBoolean("usingHints", true);
+			vibrateToggle = prefs.getBoolean("usingVibrate", true);
+		}
+		
 		
 	}
 
@@ -69,7 +84,9 @@ public class MainMenuActivity extends Activity {
 		startActivity(intent);
 	}
 	public void toStartGame(View v){
-		setContentView(new GameView(this));
+		Intent intent = new Intent(this, GameActivity.class);
+		startActivity(intent);
+		//setContentView(new GameView(this));
 	}
 
 

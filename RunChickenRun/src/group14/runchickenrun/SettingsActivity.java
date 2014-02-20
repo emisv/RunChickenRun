@@ -3,13 +3,17 @@ package group14.runchickenrun;
 import group14.runchickenrun.util.SystemUiHider;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.ToggleButton;
 import android.support.v4.app.NavUtils;
 
 /**
@@ -45,7 +49,16 @@ public class SettingsActivity extends Activity {
 	/**
 	 * The instance of the {@link SystemUiHider} for this activity.
 	 */
-
+	
+	
+	private boolean soundToggle;
+	private boolean hintToggle;
+	private boolean vibrateToggle;
+	private SharedPreferences prefs;
+	
+	private ToggleButton soundToggleButton;
+	private ToggleButton hintToggleButton;
+	private ToggleButton vibrateToggleButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +67,72 @@ public class SettingsActivity extends Activity {
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_settings);
+		
+		soundToggleButton = (ToggleButton) findViewById(R.id.toggle_sound_menu);
+		hintToggleButton = (ToggleButton) findViewById(R.id.toggle_tutorial_menu);
+		vibrateToggleButton = (ToggleButton) findViewById(R.id.toggle_vibration_menu);
+		
+		if(prefs == null){
+			prefs = this.getSharedPreferences("com.group14.RunChickenRun", Context.MODE_PRIVATE);
+			soundToggle = prefs.getBoolean("usingSound", true);
+			hintToggle = prefs.getBoolean("usingHints", true);
+			vibrateToggle = prefs.getBoolean("usingVibrate", true);
+			soundToggleButton.setChecked(soundToggle);
+			hintToggleButton.setChecked(hintToggle);
+			vibrateToggleButton.setChecked(vibrateToggle);
+		}
+		
+	}
+	public void onSoundToggle(View view){
+	    if(((ToggleButton) view).isChecked()) {
+	    	SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("usingSound", true); // value to store
+            editor.commit();
+            
+            //// SET SOUND
+            
+            
+	    } else {
+	    	SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("usingSound", false); // value to store
+            editor.commit();
+            
+            //// REMOVE SOUND
+	    }    
+	}
+	public void onHintToggle(View view){
+	    if(((ToggleButton) view).isChecked()) {
+	    	SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("usingHints", true); // value to store
+            editor.commit();
+            
+            //// SET HINTS
+            
+	    } else {
+	    	SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("usingHints", false); // value to store
+            editor.commit();
+            
+            //// REMOVE HINTS
+            
+	    }    
+	}
+	public void onVibrateToggle(View view){
+	    if(((ToggleButton) view).isChecked()) {
+	    	SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("usingVibrate", true); // value to store
+            editor.commit();
+            
+            //// SET VIBRATE
+            
+	    } else {
+	    	SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("usingVibrate", false); // value to store
+            editor.commit();
+            
+            //// REMOVE VIBRATE
+            
+	    }    
 	}
 
 }
